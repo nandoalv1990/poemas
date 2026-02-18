@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta con poemas · Fernando A.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e5d9cc;
+            background-image: radial-gradient(circle at 10% 30%, rgba(210, 190, 170, 0.2) 2px, transparent 2px);
+            background-size: 30px 30px;
+            font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+            color: #2e2b28;
+        }
+
+        .letter {
+            max-width: 620px;
+            width: 100%;
+            background: #fffcf7;
+            padding: 3.2rem 3rem;
+            border-radius: 2px;
+            box-shadow: 
+                0 4px 10px rgba(0, 0, 0, 0.03),
+                0 0 0 1px #f0e8df,
+                0 20px 30px -10px rgba(60, 40, 20, 0.08);
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d8cbbc, #d8cbbc, transparent);
+        }
+
+        .letter::after {
+            content: "✦";
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            font-size: 1.8rem;
+            color: #cbb9a6;
+            opacity: 0.2;
+            font-family: serif;
+            transform: rotate(5deg);
+        }
+
+        .poem {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .stanza {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .line {
+            font-size: 1.2rem;
+            letter-spacing: 0.02em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-weight: 400;
+            color: #2c2824;
+        }
+
+        .line.indent-1 {
+            padding-left: 1.8rem;
+        }
+
+        .line.indent-2 {
+            padding-left: 3.2rem;
+        }
+
+        .line.indent-3 {
+            padding-left: 4.6rem;
+        }
+
+        .em-dash {
+            font-style: italic;
+            color: #7a6a5c;
+            font-size: 0.98em;
+        }
+
+        .letter-separator {
+            border: none;
+            height: 1px;
+            background: repeating-linear-gradient(90deg, #d4c3b2 0px, #d4c3b2 4px, transparent 4px, transparent 8px);
+            margin: 2rem 0 1.2rem 0;
+            width: 100%;
+        }
+
+        .signature {
+            font-family: 'Caveat', 'Brush Script MT', 'Courier New', cursive;
+            font-size: 1.8rem;
+            text-align: right;
+            color: #5f4e3c;
+            margin-top: 1.5rem;
+            padding-top: 0.5rem;
+            border-top: none;
+            position: relative;
+            font-weight: 400;
+            letter-spacing: 1px;
+            word-break: break-word;
+        }
+
+        .signature span {
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: inherit;
+            text-transform: none;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid #d9cdc1;
+            padding-bottom: 2px;
+        }
+
+        .date {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #a28f7e;
+            margin-bottom: 2rem;
+            text-align: right;
+            border-bottom: 1px dashed #e1d6cd;
+            padding-bottom: 0.8rem;
+        }
+
+        .reddit-note {
+            display: none;
+        }
+
+        @media (max-width: 500px) {
+            .letter {
+                padding: 2rem 1.5rem;
+            }
+            .line {
+                font-size: 1.1rem;
+            }
+            .line.indent-2 {
+                padding-left: 2.4rem;
+            }
+            .line.indent-3 {
+                padding-left: 3.2rem;
+            }
+            .signature {
+                font-size: 1.6rem;
+            }
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:wght@400;500&display=swap');
+    </style>
+</head>
+<body>
+    <div class="letter">
+        <div class="date">
+            —  febrero, 2026  —
+        </div>
+        <div class="poem">
+            
+            <div class="stanza">
+                <div class="line">Notas de amor eterno,</div>
+                <div class="line indent-1">en esta vida</div>
+                <div class="line indent-1">y en las demás,</div>
+                <div class="line indent-3">sin nombre.</div>
+            </div>
+
+            <div class="stanza">
+                <div class="line">Promesas —<span class="em-dash">frutos bordados en oro</span>—</div>
+                <div class="line indent-1">entre manos entrelazadas</div>
+                <div class="line indent-2">cerca de mi corazón.</div>
+            </div>
+
+            <div class="stanza">
+                <div class="line">Oídos ensordecidos</div>
+                <div class="line indent-1">entre labios entreabiertos,</div>
+                <div class="line indent-3">susurrando.</div>
+            </div>
+
+            <div class="stanza">
+                <div class="line">Juramentos que no me pertenecían.</div>
+            </div>
+
+            <div class="stanza">
+                <div class="line">Corazones curiosos,</div>
+                <div class="line indent-1">capaces de dividirse</div>
+                <div class="line indent-2">sin romperse del todo.</div>
+            </div>
+
+            <div class="stanza">
+                <div class="line">Palabras ensayadas.</div>
+                <div class="line">Promesas insostenibles.</div>
+            </div>
+
+            <div class="stanza">
+                <div class="line">Promesas no dichas,</div>
+                <div class="line indent-1">no rotas,</div>
+                <div class="line indent-1">y sin embargo</div>
+                <div class="line indent-3">dolorosas.</div>
+            </div>
+
+            <div class="stanza">
+                <div class="line">Amores sin huellas visibles.</div>
+            </div>
+
+            <div class="stanza">
+                <div class="line">Amores con la precisión de las palabras</div>
+                <div class="line indent-1">que cambian de destinatario,</div>
+                <div class="line indent-2">evaporándose en soledad.</div>
+            </div>
+
+            <div class="stanza">
+                <div class="line">Piezas doradas,</div>
+                <div class="line indent-1">frágiles como el papel.</div>
+                <div class="line indent-2">Brillan mientras duran.</div>
+            </div>
+
+        </div>
+
+        <div class="letter-separator"></div>
+
+    <!-- 
+        <div class="signature">
+            <span>Fernando A.</span>
+        </div>
+    -->
+
+        <div style="font-size: 0.7rem; color: #b9aa9c; text-align: center; margin-top: 2rem; font-style: italic; letter-spacing: 1px;">
+            ✎  para ser leído en silencio  ✎
+        </div>
+    </div>
+
+    <!-- 
+        Si estás leyendo esto: 
+        el poema está diseñado como una carta.
+        — Fernando A.
+    -->
+</body>
+</html>
