@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carta nocturna</title>
+
+<style>
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:40px 20px;
+    font-family: Georgia, serif;
+    background: radial-gradient(ellipse at bottom, #0b1d3a 0%, #020111 100%);
+    color:#e8ecff;
+    overflow-y:auto;
+}
+
+/* estrellas */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(1px 1px at 70% 60%, white, transparent),
+        radial-gradient(2px 2px at 40% 80%, white, transparent),
+        radial-gradient(1px 1px at 90% 20%, white, transparent),
+        radial-gradient(2px 2px at 10% 70%, white, transparent);
+    opacity:0.6;
+    pointer-events:none;
+}
+
+/* carta */
+.carta{
+    width:100%;
+    max-width:620px;
+    padding:clamp(30px,5vw,60px);
+    background:rgba(10,15,35,0.75);
+    backdrop-filter: blur(6px);
+    border-radius:12px;
+    box-shadow:0 0 40px rgba(0,0,0,0.6);
+    line-height:1.8;
+    font-size:clamp(16px,2vw,18px);
+    position:relative;
+}
+
+/* título */
+.titulo{
+    text-align:center;
+    font-size:14px;
+    letter-spacing:3px;
+    opacity:0.6;
+    margin-bottom:30px;
+}
+
+/* separadores */
+.separador{
+    text-align:center;
+    margin:30px 0;
+    opacity:0.5;
+}
+
+p{
+    margin:18px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+
+<div class="titulo">carta estrella nocturna</div>
+
+<p>
+Luz nocturna, luz distante y fría...<br>
+Te veía pocas veces en el firmamento.<br>
+Hermosa y fría, ¿por qué estás tan lejos?<br>
+Creí sostenerte, creí sentirte...
+</p>
+
+<p>
+Una estrella caótica,<br>
+brillante,<br>
+y sola.<br>
+Imperfectamente hermosa.
+</p>
+
+<div class="separador">✦</div>
+
+<p>
+No te volveré a ver.<br>
+No estaré cuando te poses en el cielo,<br>
+porque me dolió que desaparecieras<br>
+de mi firmamento.
+</p>
+
+<p>
+La lluvia fuerte cesó,<br>
+el estruendo en el cielo<br>
+se convirtió en un recordatorio.
+</p>
+
+<p>
+Porque las nubes te cubrieron,<br>
+y no te he vuelto a ver.
+</p>
+
+<div class="separador">✦</div>
+
+<p>
+Estrella mía, estrella sola,<br>
+¿por qué ya no te veo?<br>
+¿No querías brillar para mí?
+</p>
+
+</div>
+
+</body>
+</html>
