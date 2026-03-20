@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El botón · poema sobre camisa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #dcd3c9; /* fondo neutro como perchero */
+            background-image: radial-gradient(circle at 20% 30%, #b8aa99 1px, transparent 1px),
+                                radial-gradient(circle at 80% 70%, #c2b5a3 1px, transparent 1px);
+            background-size: 40px 40px, 70px 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            font-family: 'Times New Roman', serif;
+            position: relative;
+        }
+
+        /* La camisa (con rayas azules) */
+        .shirt {
+            position: relative;
+            max-width: 750px;
+            width: 100%;
+            background: #eaf0fd; /* base azul muy clarito */
+            background-image: repeating-linear-gradient(45deg, 
+                transparent, 
+                transparent 12px, 
+                rgba(52, 86, 139, 0.15) 12px, 
+                rgba(52, 86, 139, 0.12) 24px);
+            border-radius: 30px 30px 15px 15px;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.3), 
+                        0 0 0 2px #b4c1d9 inset,
+                        0 0 0 4px #f0f5ff inset;
+            border: 1px solid #5e6f8f;
+            transform: rotate(0.5deg);
+        }
+
+        /* Cuello de la camisa */
+        .shirt::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 20%;
+            width: 60%;
+            height: 30px;
+            background: linear-gradient(145deg, #b4c4e0 0%, #d9e2f0 50%, #a3b5d1 100%);
+            border-radius: 60% 60% 20px 20px;
+            box-shadow: 0 -4px 5px rgba(0,0,0,0.1);
+            border: 1px solid #7f8fb0;
+            z-index: 2;
+        }
+
+        /* Solapa izquierda */
+        .shirt::after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            width: 120px;
+            height: 100px;
+            background: linear-gradient(135deg, #dbe3f5 0%, #b1c2e0 100%);
+            border-radius: 40% 10px 50% 10px;
+            transform: rotate(-5deg);
+            border: 1px solid #8a9cc0;
+            box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        /* Bolsillo simulado */
+        .pocket {
+            position: absolute;
+            top: 90px;
+            right: 40px;
+            width: 100px;
+            height: 100px;
+            background: transparent;
+            border: 2px dashed #7b8fb0;
+            border-radius: 0 15px 15px 15px;
+            opacity: 0.3;
+            transform: rotate(2deg);
+            z-index: 2;
+        }
+
+        /* Botones */
+        .button {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: radial-gradient(circle at 30% 30%, #f5f2e3, #c9bc9e);
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 0 0 2px #918b78 inset, 0 0 0 3px #f3ecd8 inset;
+            border: 1px solid #776e5a;
+            z-index: 5;
+        }
+
+        .button-1 { top: 30px; left: 40px; } /* botón del cuello */
+        .button-2 { top: 100px; left: 60px; } /* primer botón delantero */
+        .button-3 { top: 170px; left: 60px; } /* segundo botón */
+        .button-4 { top: 240px; left: 60px; } /* tercer botón */
+
+        /* El botón protagonista */
+        .button-main {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: radial-gradient(circle at 30% 30%, #e8ddc7, #9e8f74);
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 0 3px #b8aa8c inset, 0 0 0 4px #dacfb8 inset;
+            border: 1px solid #6b5f4b;
+            z-index: 10;
+            top: 170px;
+            left: 200px;
+            transform: rotate(15deg);
+            opacity: 0.95;
+            transition: all 0.3s;
+        }
+
+        .button-main:hover {
+            transform: rotate(0deg) scale(1.1);
+            box-shadow: 0 0 15px #b4a582;
+        }
+
+        /* etiqueta del botón */
+        .button-label {
+            position: absolute;
+            top: 200px;
+            left: 230px;
+            font-size: 0.7rem;
+            background: rgba(255, 250, 230, 0.8);
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            color: #4d4a3b;
+            border: 1px solid #ad9f85;
+            white-space: nowrap;
+            z-index: 20;
+            font-style: italic;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* contenido principal: */
+        .poem-container {
+            position: relative;
+            z-index: 30;
+            background: rgba(255, 250, 240, 0.5);
+            backdrop-filter: blur(2px);
+            padding: 2rem 2.2rem;
+            border-radius: 30px;
+            margin-top: 20px;
+            border: 1px solid #aab9d4;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .poem-title {
+            font-size: 1.6rem;
+            font-family: 'Georgia', serif;
+            color: #1f3147;
+            letter-spacing: 2px;
+            border-bottom: 2px dotted #5e7a9c;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.8rem;
+            text-align: center;
+            font-weight: 400;
+            text-transform: uppercase;
+            word-spacing: 6px;
+        }
+
+        .poem-title small {
+            font-size: 0.9rem;
+            display: block;
+            color: #5f6f88;
+            text-transform: none;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .poem {
+            font-size: 1.2rem;
+            line-height: 2rem;
+            color: #1d2a3b;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            white-space: pre-line;
+            text-shadow: 0 1px 2px #efebdd;
+        }
+
+        .poem .line {
+            margin: 0.3rem 0;
+        }
+
+        .poem .indent-1 {
+            padding-left: 2rem;
+        }
+
+        .poem .indent-2 {
+            padding-left: 4rem;
+        }
+
+        .poem .indent-3 {
+            padding-left: 6rem;
+        }
+
+        .poem .highlight {
+            background: rgba(180, 170, 210, 0.15);
+            font-style: italic;
+            border-bottom: 1px dotted #6b7f9e;
+        }
+
+        /* firma con hilo */
+        .thread-signature {
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 15px;
+            border-top: 2px solid #b2c1da;
+            padding-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #394e6b;
+        }
+
+        .thread-icon {
+            font-size: 1.5rem;
+            opacity: 0.6;
+            letter-spacing: 5px;
+        }
+
+        /* hilos sueltos decorativos */
+        .thread-1, .thread-2 {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #a48e6f, transparent);
+            transform: rotate(10deg);
+            z-index: 0;
+        }
+
+        .thread-1 { top: 150px; left: 10px; }
+        .thread-2 { bottom: 80px; right: 20px; transform: rotate(-15deg); }
+
+        .aguja {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            font-size: 3rem;
+            opacity: 0.1;
+            transform: rotate(25deg);
+        }
+
+        /* pequeños detalles de tela */
+        .fabric-texture {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="2" cy="2" r="1" fill="%239ca7bb" opacity="0.1"/><circle cx="15" cy="8" r="1" fill="%239fb0cc" opacity="0.1"/></svg>');
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="shirt">
+        <!-- textura de tela superpuesta -->
+        <div class="fabric-texture"></div>
+        
+        <!-- botones regulares -->
+        <div class="button button-1" title="botón del cuello"></div>
+        <div class="button button-2" title="botón obediente"></div>
+        <div class="button button-3" title="botón sin historia"></div>
+        <div class="button button-4" title="botón alineado"></div>
+        
+        <!-- botón protagonista -->
+        <div class="button-main" title="el botón sin destino"></div>
+        <div class="button-label">el que sobraba</div>
+
+        <!-- bolsillo y cuello -->
+        <div style="position: absolute; bottom: 15px; left: 30px; font-size: 0.6rem; color: #7e8da5; opacity: 0.4; z-index: 40;">❝ hecha a mano ❞</div>
+
+        <!-- hilos sueltos -->
+        <div class="thread-1"></div>
+        <div class="thread-2"></div>
+        <div class="aguja">🪡</div>
+
+        <!-- EL POEMA  -->
+        <div class="poem-container">
+            <div class="poem-title">
+                ◇ EL BOTÓN ◇
+                <small>(historia de un hilo olvidado)</small>
+            </div>
+
+            <div class="poem">
+                <div class="line">En la colina del hilo obediente,</div>
+                <div class="line">donde los cuellos siempre miran al frente,</div>
+                <div class="line">nació un botón sin ojal ni destino,</div>
+                <div class="line indent-1">zurcido al revés, sin marca, sin sino.</div>
+
+                <div class="line" style="margin-top:1.2rem;">No brillaba al sol de los planchados,</div>
+                <div class="line">ni reía en las charlas de trapos dorados.</div>
+                <div class="line">Sus hilos hablaban con voz de cartón,</div>
+                <div class="line indent-2">que nadie escuchaba sin aprobación.</div>
+
+                <div class="line" style="margin-top:1.2rem;">Soñaba con ser cuello, o al menos doblar,</div>
+                <div class="line">pero el puño lo empuja a siempre callar.</div>
+                <div class="line">Los demás botones, bordados con estilo y temple</div>
+                <div class="line indent-1">reían con gestos, tejían su historia.</div>
+                <div class="line indent-2">Mas nunca miraban al dobladillo gris,</div>
+                <div class="line indent-2">donde el botón mudo esperaba el desliz.</div>
+
+                <div class="line" style="margin-top:1.2rem;"><span class="highlight">Cose y calla,</span> dijeron las manos</div>
+                <div class="line indent-1">que empuñan la aguja e hilo.</div>
+                <div class="line">Así el botón duerme bajo la solapa,</div>
+                <div class="line indent-2">fiel a su forma,</div>
+                <div class="line indent-2">aunque la camisa lo tapa.</div>
+            </div>
+
+            <div class="thread-signature">
+                <span class="thread-icon">🪡 🧵 🪢</span>
+                <span>— zurcido a mano, 2025 —</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- pequeños elementos flotantes como fondo -->
+    <div style="position: fixed; top: 10%; right: 2%; opacity: 0.05; font-size: 5rem; transform: rotate(20deg);">🧵</div>
+    <div style="position: fixed; bottom: 5%; left: 2%; opacity: 0.05; font-size: 4rem; transform: rotate(-15deg);">🪢</div>
+</body>
+</html>

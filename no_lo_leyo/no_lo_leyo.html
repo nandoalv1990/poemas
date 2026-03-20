@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para quien no lo leyó · Poema</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #2b1b12;
+            background-image: radial-gradient(circle at 30% 40%, #3f2e1f 2px, transparent 2px), 
+                                radial-gradient(circle at 70% 80%, #4a3727 1px, transparent 2px);
+            background-size: 40px 40px, 60px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            font-family: 'Courier New', 'American Typewriter', monospace;
+            position: relative;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(115deg, rgba(80, 50, 30, 0.2) 0%, transparent 30%),
+                        linear-gradient(225deg, rgba(40, 20, 5, 0.3) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .letter {
+            position: relative;
+            z-index: 10;
+            max-width: 580px;
+            width: 100%;
+            background: #fff9ef;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.7), 
+                        0 5px 15px rgba(0,0,0,0.5),
+                        0 0 0 1px #b89b7a inset,
+                        0 0 0 2px #e6d6bf inset;
+            border-radius: 2px 20px 20px 2px;
+            transform: rotate(0.3deg);
+            border-left: 4px solid #a17a5c;
+        }
+
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 20%; left: 15%;
+            width: 120px; height: 80px;
+            background: rgba(160, 120, 80, 0.08);
+            border-radius: 70% 30% 60% 40% / 50% 60% 40% 50%;
+            filter: blur(8px);
+            transform: rotate(-10deg);
+            pointer-events: none;
+        }
+
+        .letter::after {
+            content: "";
+            position: absolute;
+            bottom: 15%; right: 10%;
+            width: 150px; height: 100px;
+            background: rgba(130, 90, 60, 0.06);
+            border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+            filter: blur(12px);
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+
+        .fold-mark {
+            position: absolute;
+            top: 30px; right: 30px;
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, transparent 50%, rgba(180, 140, 100, 0.15) 50%);
+            transform: rotate(45deg);
+            border-radius: 3px;
+            z-index: 0;
+        }
+
+        .motel-header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+            font-family: 'Times New Roman', serif;
+            border-bottom: 1px dashed #c1a385;
+            padding-bottom: 1rem;
+            letter-spacing: 3px;
+            color: #694d38;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .motel-header .motel-name {
+            font-size: 1.6rem;
+            font-family: 'Brush Script MT', cursive;
+            text-transform: none;
+            letter-spacing: 2px;
+            color: #9f6f4b;
+            text-shadow: 1px 1px 0 #eadac8;
+            margin: 0.2rem 0;
+            border-top: 1px solid #dacbb8;
+            border-bottom: 1px solid #dacbb8;
+            padding: 0.4rem 0;
+        }
+
+        .motel-header span {
+            background: #fff9ef;
+            padding: 0 10px;
+            font-style: italic;
+            font-size: 0.75rem;
+            color: #7e5d45;
+        }
+
+        .heart-icon {
+            font-size: 1.2rem;
+            color: #b7523c;
+            opacity: 0.5;
+            margin: 0 4px;
+        }
+
+        .poem {
+            font-size: 1.3rem;
+            line-height: 2.2rem;
+            color: #2f1f13;
+            font-family: 'Courier New', monospace;
+            white-space: pre-line;
+            margin: 2rem 0 2.5rem 0;
+            padding: 0.5rem 0;
+            position: relative;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .poem p {
+            margin: 0.8rem 0;
+        }
+
+        .poem strong {
+            font-weight: 600;
+            color: #9c4f34;
+            background: linear-gradient(180deg, transparent 70%, #f0daca 30%);
+            display: inline;
+            padding: 0 0.2rem;
+        }
+
+        .poem .faded {
+            opacity: 0.7;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #6f503b;
+        }
+
+        .tear-stain {
+            position: absolute;
+            bottom: 20px; left: 30px;
+            font-size: 4rem;
+            opacity: 0.1;
+            transform: rotate(20deg);
+            color: #a77454;
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .signature-area {
+            margin-top: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid #e3cfbc;
+            padding-top: 1.2rem;
+            font-size: 0.95rem;
+            color: #5b4132;
+        }
+
+        .kiss-mark {
+            font-size: 2rem;
+            line-height: 1;
+            color: #d00000;
+            opacity: 0.5;
+            transform: rotate(-10deg);
+            filter: blur(0.5px);
+            border-radius: 50%;
+            text-shadow: 2px 2px 3px #cc9f8a;
+        }
+
+        .date {
+            font-style: italic;
+            font-size: 0.9rem;
+            background: rgba(210, 170, 140, 0.2);
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            border: 1px solid #d2b59e;
+        }
+
+        .small-note {
+            font-size: 0.75rem;
+            text-align: right;
+            margin-top: 0.5rem;
+            color: #896f5a;
+            letter-spacing: 1px;
+        }
+
+        .lipstick-smudge {
+            position: absolute;
+            bottom: 45px; right: 35px;
+            width: 50px; height: 20px;
+            background: #cb8b77;
+            opacity: 0.15;
+            border-radius: 50%;
+            filter: blur(6px);
+            transform: rotate(25deg);
+            z-index: 1;
+        }
+
+        .nocturna {
+            position: absolute;
+            top: 15px; left: 15px;
+            font-size: 0.8rem;
+            color: #a48163;
+            opacity: 0.25;
+            writing-mode: vertical-rl;
+        }
+    </style>
+</head>
+<body>
+    <div class="letter">
+        <div class="fold-mark"></div>
+        <div class="lipstick-smudge"></div>
+
+        <div class="motel-header">
+            <span>✦ · ✦</span>
+            <div class="motel-name">Lleva un recuerdo</div>
+            <div style="font-size:0.7rem; margin-top:8px;"></div>
+        </div>
+
+        <!-- poema -->
+        <div class="poem">
+            <p><strong>Quería ser yo.</strong><br>
+            Creí que era una baratija.<br>
+            Ajenos éramos, amando a ciegas.<br>
+            Quería durar para siempre.<br>
+            <strong>Mi corazón no era necesario.</strong><br>
+            Entre mantos prestados, me entregué a morir.<br>
+            Quería quedarme.<br>
+            Sostenido en sus brazos,<br>
+            hablar de nosotros.<br>
+            <strong>Me quedé solo en esa habitación.</strong><br>
+            Con frío.<br>
+            Mis lágrimas eran amargas <span style="font-style:italic; color:#d00000;">y sus labios dulces.</span></p>
+        </div>
+
+        <!-- firma como carta dejada en la mesilla -->
+        <div class="signature-area">
+            <div class="kiss-mark"></div>
+            <div>
+                <div class="date">Marzo</div>
+                <div class="small-note"></div>
+            </div>
+        </div>
+
+        <!-- pequeños restos, un recibo de motel -->
+        <div style="margin-top: 20px; font-size:0.65rem; color:#d00000; border-top: 1px dotted #dccbb8; padding-top: 8px; display: flex; justify-content: space-between;">
+            <span></span>
+            <span>✦</span>
+        </div>
+
+        <!-- mancha de lágrima -->
+        <div class="tear-stain">💔</div>
+        <div style="position: absolute; top: 50%; right: 10px; font-size: 1.5rem; opacity: 0.05; transform: rotate(90deg);">🌙</div>
+
+        <!-- número de habitación en la esquina -->
+        <div class="nocturna">no volverás</div>
+    </div>
+
+    <!-- pequeñas huellas dactilares manchadas -->
+    <div style="position: fixed; bottom: 20px; right: 20px; opacity:0.1; font-size: 3rem;"></div>
+    <div style="position: fixed; top: 20px; left: 20px; opacity:0.05; font-size: 4rem; transform: rotate(-10deg);">🥀</div>
+</body>
+</html>
